@@ -631,6 +631,158 @@
   }
   .nav-links a:hover { color: var(--gold); }
 
+  /* ── BLOG ── */
+  .blog {
+    padding: 6rem 6vw;
+    background: linear-gradient(180deg, var(--deep) 0%, var(--ink) 100%);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .blog-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 2.5rem 2rem;
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .blog-card:hover { border-color: rgba(212,168,67,0.25); transform: translateY(-4px); }
+  .blog-card:hover::before { opacity: 1; }
+
+  .blog-data {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .blog-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.35;
+    margin-bottom: 1rem;
+  }
+
+  .blog-resumo {
+    font-size: 0.95rem;
+    color: rgba(240,230,208,0.6);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-ler {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212,168,67,0.3);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    cursor: pointer;
+  }
+  .blog-ler:hover { color: var(--warm); }
+
+  /* Modal post */
+  .post-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(13,11,8,0.96);
+    overflow-y: auto;
+    padding: 4rem 6vw;
+  }
+
+  .post-modal.open { display: block; }
+
+  .post-fechar {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: rgba(240,230,208,0.4);
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+  .post-fechar:hover { color: var(--gold); }
+
+  .post-conteudo {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .post-conteudo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .post-conteudo .post-meta {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(212,168,67,0.2);
+  }
+
+  .post-conteudo .post-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: rgba(240,230,208,0.85);
+    white-space: pre-line;
+  }
+
+  .blog-loading {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: rgba(240,230,208,0.3);
+    text-transform: uppercase;
+    text-align: center;
+    padding: 3rem 0;
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -672,6 +824,7 @@
   <a href="#" class="nav-logo">Marina Jade</a>
   <ul class="nav-links">
     <li><a href="#volumes">A Série</a></li>
+    <li><a href="#blog">Blog</a></li>
     <li><a href="#sobre">A Autora</a></li>
     <li><a href="#adquirir">Adquirir</a></li>
   </ul>
@@ -786,6 +939,27 @@
   </div>
 </section>
 
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <p class="section-label reveal">Palavras em trânsito</p>
+  <h2 class="section-title reveal">O <em>blog</em> da autora</h2>
+  <div class="blog-grid" id="blog-grid">
+    <p class="blog-loading">Carregando...</p>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-icon">✦</span>
+  <div class="divider-line"></div>
+</div>
+
+<!-- MODAL POST -->
+<div class="post-modal" id="post-modal">
+  <button class="post-fechar" id="post-fechar" onclick="fecharPost()">← Voltar</button>
+  <div class="post-conteudo" id="post-conteudo"></div>
+</div>
+
 <!-- ABOUT -->
 <section class="about" id="sobre">
   <div class="about-visual reveal">
@@ -857,6 +1031,71 @@
     });
   }, { threshold: 0.12 });
   revealEls.forEach(el => observer.observe(el));
+</script>
+
+<script>
+  // Blog
+  async function carregarBlog() {
+    const grid = document.getElementById('blog-grid');
+    try {
+      const res = await fetch('posts.json?v=' + Date.now());
+      const posts = await res.json();
+      if (!posts.length) {
+        grid.innerHTML = '<p class="blog-loading">Nenhum post ainda.</p>';
+        return;
+      }
+      grid.innerHTML = posts.map(p => `
+        <div class="blog-card reveal" onclick="abrirPost('${p.arquivo}', '${p.titulo}', '${p.data}')">
+          <p class="blog-data">${formatarData(p.data)}</p>
+          <p class="blog-titulo">${p.titulo}</p>
+          <p class="blog-resumo">${p.resumo}</p>
+          <button class="blog-ler">Ler →</button>
+        </div>
+      `).join('');
+      // Reativar reveal nos novos elementos
+      document.querySelectorAll('.blog-card.reveal').forEach(el => observer.observe(el));
+    } catch(e) {
+      grid.innerHTML = '<p class="blog-loading">Posts em breve.</p>';
+    }
+  }
+
+  function formatarData(dataStr) {
+    const [a, m, d] = dataStr.split('-');
+    const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    return `${d} ${meses[parseInt(m)-1]} ${a}`;
+  }
+
+  async function abrirPost(arquivo, titulo, data) {
+    const modal = document.getElementById('post-modal');
+    const conteudo = document.getElementById('post-conteudo');
+    conteudo.innerHTML = `<p class="blog-loading">Carregando...</p>`;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    try {
+      const res = await fetch(arquivo + '?v=' + Date.now());
+      const texto = await res.text();
+      // Pula as duas primeiras linhas (título e data já usados)
+      const linhas = texto.split('\n');
+      const corpo = linhas.slice(2).join('\n').trim();
+      conteudo.innerHTML = `
+        <h1>${titulo}</h1>
+        <p class="post-meta">${formatarData(data)}</p>
+        <div class="post-body">${corpo}</div>
+      `;
+    } catch(e) {
+      conteudo.innerHTML = `<h1>${titulo}</h1><p class="post-meta">${formatarData(data)}</p><p class="post-body">Não foi possível carregar o post.</p>`;
+    }
+  }
+
+  function fecharPost() {
+    document.getElementById('post-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Fechar com ESC
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharPost(); });
+
+  carregarBlog();
 </script>
 </body>
 </html>
