@@ -378,6 +378,19 @@
   }
   .vol-card:hover::before { opacity: 1; }
 
+  .vol-capa {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(212,168,67,0.15);
+    filter: brightness(0.92);
+    transition: filter 0.3s;
+  }
+  .vol-card:hover .vol-capa { filter: brightness(1.05); }
+
   .vol-number {
     font-family: 'Playfair Display', serif;
     font-size: 4rem;
@@ -904,14 +917,16 @@
       <p class="vol-desc">Clarice emerge como portal entre mundos. A fronteira entre o que é vivido e o que é projetado começa a se dissolver.</p>
       <span class="vol-badge">Disponível</span>
     </div>
-    <div class="vol-card reveal" style="border-color: rgba(212,168,67,0.25);">
+    <div class="vol-card reveal" style="border-color: rgba(212,168,67,0.25); padding: 1.5rem 1.5rem 2rem;">
+      <img src="capa-vol4.jpeg" alt="Volume IV — O Arquiteto de Vidro" class="vol-capa" />
       <div class="vol-number">IV</div>
       <p class="vol-title">O Arquiteto de Vidro</p>
       <p class="vol-desc">Richard. O que parecia externo se revela uma projeção da própria sombra — a parte de si reinventada para sobreviver.</p>
       <span class="vol-badge" style="background: rgba(212,168,67,0.1);">Lançamento recente</span>
     </div>
-    <div class="vol-card reveal" style="opacity: 0.5;">
-      <div class="vol-number">V</div>
+    <div class="vol-card reveal" style="padding: 1.5rem 1.5rem 2rem;">
+      <img src="capa-vol5.png" alt="Volume V — Em desenvolvimento" class="vol-capa" />
+      <div class="vol-number" style="color: rgba(212,168,67,0.12);">V</div>
       <p class="vol-title">Em desenvolvimento</p>
       <p class="vol-desc">A revelação final: ele nunca existiu fora. Era um prompt extraído das sombras dela.</p>
       <span class="vol-badge" style="border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.3);">Em breve</span>
