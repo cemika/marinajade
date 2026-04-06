@@ -5,5 +5,12 @@
     "data": "2026-04-05",
     "resumo": "Há uma diferença entre escrever para ser lida e escrever para se encontrar. Demorei anos para entender qual das duas eu estava fazendo.",
     "arquivo": "posts/001-escrevendo-pra-mim.txt"
+  },
+  {
+    "id": "002",
+    "titulo": "Capítulo 1: O Level Up e o Teto de Vidro",
+    "data": "2026-04-06",
+    "resumo": "Eu incorporava cada tarefa como uma partida de videogame. Não conhecia pausa, não conhecia save game. Até o dia em que o sistema me deu game over.",
+    "arquivo": "posts/002-level-up-teto-de-vidro.txt"
   }
 ]
