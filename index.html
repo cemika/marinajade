@@ -430,7 +430,6 @@
   .about-frame {
     width: 100%;
     aspect-ratio: 3/4;
-    background: linear-gradient(145deg, var(--sepia), var(--deep));
     border: 1px solid rgba(212,168,67,0.2);
     display: flex;
     align-items: center;
@@ -439,25 +438,30 @@
     overflow: hidden;
   }
 
-  .about-frame::before {
-    content: 'M';
-    font-family: 'Playfair Display', serif;
-    font-size: 20rem;
-    font-weight: 900;
-    font-style: italic;
-    color: rgba(212,168,67,0.06);
-    position: absolute;
-    line-height: 1;
+  .about-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+    transition: filter 0.5s ease;
+  }
+
+  .about-frame:hover img {
+    filter: grayscale(0%) contrast(1.0);
   }
 
   .about-frame-caption {
     font-family: 'Cormorant SC', serif;
     font-size: 0.65rem;
     letter-spacing: 0.3em;
-    color: rgba(200,169,110,0.5);
+    color: rgba(200,169,110,0.85);
     position: absolute;
     bottom: 1.5rem;
     text-transform: uppercase;
+    background: rgba(13,11,8,0.6);
+    padding: 0.3rem 0.8rem;
   }
 
   .corner {
@@ -964,6 +968,7 @@
 <section class="about" id="sobre">
   <div class="about-visual reveal">
     <div class="about-frame">
+      <img src="marina-jade.png" alt="Marina Jade — autora" />
       <div class="corner corner-tl"></div>
       <div class="corner corner-tr"></div>
       <div class="corner corner-bl"></div>
